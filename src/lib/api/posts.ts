@@ -2,6 +2,7 @@ import { postsUrl } from './config';
 import { GH_TOKEN } from '$env/static/private';
 
 import { markdownToHTML } from './markdown';
+import type { PostMarkdownType } from '$lib/types';
 
 const headers = {
 	// GitHub suggests to include the API version

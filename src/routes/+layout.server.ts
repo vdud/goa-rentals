@@ -1,4 +1,3 @@
-import { json } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
 import { vehicles, blogs } from '$db/collections';
