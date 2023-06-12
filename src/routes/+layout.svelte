@@ -327,7 +327,16 @@
 		</p>
 	</div>
 
-	<div class="topBlogs" />
+	<div class="topBlogs">
+		{#each allBlogs as blog}
+			<div class="blog">
+				<a href="blogs/{blog.slug}">
+					<h1>{blog.articleName}</h1>
+					<p>{blog.articleDescription}</p>
+				</a>
+			</div>
+		{/each}
+	</div>
 </div>
 
 <slot />
