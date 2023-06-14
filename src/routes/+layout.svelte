@@ -7,32 +7,47 @@
 	import TopBlogs from '$lib/components/TopBlogs.svelte';
 
 	import type { LayoutData } from './$types';
+	import LogoImgNav from '$lib/components/LogoImgNav.svelte';
 	export let data: LayoutData;
 	const dataBody = JSON.parse(data.body);
 	const allBlogs = dataBody.allBlogs;
 </script>
 
-<div class="Nav contactNav">
-	<TopAlertInfo />
-</div>
+<div class="main">
+	<div class="Nav contactNav">
+		<TopAlertInfo />
+	</div>
 
-<div class="Nav mainNav">
-	<Nav />
-</div>
+	<div class="LogoImage">
+		<LogoImgNav />
+	</div>
 
-<slot />
+	<div class="Nav mainNav">
+		<Nav />
+	</div>
 
-<div class="topBlogs">
-	<TopBlogs {allBlogs} />
-</div>
+	<slot />
 
-<div class="newsLeter">
-	<Newsletter />
+	<div class="topBlogs">
+		<TopBlogs {allBlogs} />
+	</div>
+
+	<div class="newsLeter">
+		<Newsletter />
+	</div>
 </div>
 
 <style>
 	.Nav {
-		display: flex;
-		justify-content: space-around;
+		position: relative;
+	}
+	.main {
+		background-color: #eee;
+		margin: 5px;
+		width: clamp(300px, calc(100% - 12px), 1440px);
+		border-radius: 5px;
+
+		box-shadow: var(--boxShadowsBlur);
+		border: 1px solid #fff;
 	}
 </style>

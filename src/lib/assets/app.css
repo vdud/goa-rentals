@@ -1,8 +1,68 @@
+:root {
+	--fontMultiplier: 1.5;
+
+	--primary: #ffe8d6;
+	--secondary: #7fb785;
+	--optDark: #c63734;
+	--optLight: #ffeead;
+	--secOptDark: #b08daf;
+	--secOptLight: #c38387;
+	--disabled: #414141;
+
+	--boxShadows: 0px 0px 2px #6666, 0px 0px 5px #4449;
+	--boxShadowsBlur: 0px 0px 10px #4441, 0px 0px 8px #4448;
+	--boxInsetShadows: inset 0px 0px 6px #0006, inset 0px 0px 1px #111;
+}
 body {
 	margin: 0;
 	padding: 0;
+	background-color: var(--primary);
+	overflow: hidden;
+	overflow-y: scroll;
+
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 * {
-	font-family: sans-serif;
+	font-family: Roboto_Flex;
+	color: black;
+	text-decoration: none;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+}
+@font-face {
+	font-family: Roboto_Flex;
+	src: url(/Roboto_Flex/RobotoFlex.ttf);
+}
+@font-face {
+	font-family: Sand_Beach;
+	src: url(/light_beach/LightBeach.otf);
+}
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--secondary);
+	/* background-color: transparent; */
+	border-radius: var(--borderRadius);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--tertiaryThemeInverted);
 }

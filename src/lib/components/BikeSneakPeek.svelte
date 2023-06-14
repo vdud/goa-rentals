@@ -18,3 +18,10 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+	.bike {
+		background-color: rgb(50, 146, 71);
+		margin-bottom: 10px;
+	}
+</style>

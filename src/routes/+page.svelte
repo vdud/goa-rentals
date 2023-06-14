@@ -11,8 +11,6 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	console.log('data', data);
-
 	const dataBody = JSON.parse(data.body);
 	const allBikes = dataBody.allBikes;
 </script>
@@ -50,8 +48,13 @@
 		display: flex;
 		justify-content: space-around;
 	}
-	.bike {
-		background-color: rgb(50, 146, 71);
-		margin-bottom: 10px;
+	.selectionProcess {
+		overflow: hidden;
+		position: relative;
+		height: 400px;
+
+		display: flex;
+		justify-content: center;
+		align-items: end;
 	}
 </style>
