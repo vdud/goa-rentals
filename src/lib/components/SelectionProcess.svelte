@@ -4,34 +4,15 @@
 	// import { dateFrom, dateTo } from '$lib/stores/bookingStore';
 	import flatpickr from 'flatpickr';
 	import { onMount } from 'svelte';
+	import SelectionPrPageOne from './SelectionPrPageOne.svelte';
+	import {
+		backBtnAnimationIn,
+		skipBtnAnimationIn,
+		letsGoAnimationIn,
+		letsGoAnimationOut
+	} from '$lib/bigFunctions/SelectionProcessFunctions';
 
-	const selectLocation = [
-		'Select Location',
-		'candolim',
-		'calagute',
-		'baga',
-		'arpora',
-		'anjuna',
-		'vagator',
-		'mapusa',
-		'porvrim',
-		'parra',
-		'assagao',
-		'siolim',
-		'saligoa',
-		'nerul',
-		'panjim',
-		'thivim',
-		'vasco da gama',
-		'morjim',
-		'ashvem',
-		'mandrem'
-	];
-
-	const searchVehicle = () => {
-		console.log($dateFrom);
-		console.log($dateTo);
-	};
+	export let allBikes: any[];
 
 	const RndmImg = Math.floor(Math.random() * 3) + 1;
 	onMount(() => {
@@ -50,6 +31,20 @@
 			maxDate: new Date().fp_incr(14)
 		});
 	});
+
+	const skipBtnFn = () => {
+		skipBtnAnimationIn();
+		letsGoAnimationIn();
+	};
+	const backBtnFn = () => {
+		backBtnAnimationIn();
+		letsGoAnimationIn();
+		letsGoAnimationOut();
+	};
+
+	const letsGo = () => {
+		letsGoAnimationIn();
+	};
 </script>
 
 <div class="backdropImage">
@@ -61,51 +56,33 @@
 	/>
 </div>
 
-<div class="selectionProcess">
-	<div class="selectionContent">
-		<div class="inputContent selectLocation">
-			<select class="selectionInput" id="location" name="location">
-				{#each selectLocation as location}
-					<option value={location}>{location.toUpperCase()}</option>
-				{/each}
-			</select>
-		</div>
-	</div>
-
-	<!-- <div class="selectDateTime"> -->
-	<div class="selectionContent">
-		<div class="inputContent pickUp">
-			<input
-				class="selectionInput"
-				type="text"
-				name="datetime"
-				id="dateFrom"
-				bind:value={$dateFrom}
-				placeholder="Choose Date and Time"
-			/>
-		</div>
-	</div>
-	<div class="selectionContent">
-		<div class="inputContent dropOff">
-			<input
-				class="selectionInput"
-				type="text"
-				name="datetime"
-				id="dateTo"
-				bind:value={$dateTo}
-				placeholder="Choose Date and Time"
-			/>
-		</div>
-	</div>
-
-	<div class="selectionContent">
-		<div class="inputContent searchVehicleButton">
-			<button class="selectionInput" on:click={searchVehicle}>Search Vehicle Near You</button>
-		</div>
-	</div>
+<div class="commonSelectionBox selectionTopHeader" id="selectionTopHeader">
+	<button id="backBtn" on:click={backBtnFn} class="backNdSkipBtn backBtn">👈 Back</button>
+	<button id="skipBtn" on:click={skipBtnFn} class="backNdSkipBtn skipBtn">Skip 👉</button>
+</div>
+<div class="commonSelectionBox selectionProcess" id="selectionProcess">
+	<SelectionPrPageOne {allBikes} {letsGo} />
 </div>
 
 <style>
+	.backNdSkipBtn:hover {
+		background-color: #fff;
+		color: #000;
+	}
+	.backBtn {
+		display: none;
+	}
+	.backNdSkipBtn {
+		color: #fff;
+		text-shadow: 0 0 10px #0005;
+
+		margin: 0 1rem;
+
+		background-color: #fff0;
+		border-radius: 3px;
+		box-shadow: var(--boxShadows);
+		transition: all 0.3s ease-in-out;
+	}
 	.gradientTopBtm {
 		width: 100%;
 		height: 100%;
@@ -124,45 +101,72 @@
 		height: 100%;
 		object-fit: cover;
 	}
-	.inputContent {
-		width: 60%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.selectionInput {
-		margin: 0;
-		padding: 12px 15px;
-		width: fit-content;
-		margin-left: 20px;
-		border: none;
-		border-radius: 5px;
-		width: 100%;
-		margin: 7px 0;
+
+	.selectionTopHeader {
+		justify-content: space-between;
+		flex-direction: row-reverse;
+
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
+
+		border-top: 1px solid #fff5;
+
+		height: 10%;
+
+		margin: 0 30%;
+
+		transform: translateY(2rem);
+		z-index: 1;
+
+		transition: transform 0.5s ease-in-out, border-radius 1s ease-out;
 	}
 
-	.selectionContent {
-		display: flex;
-		justify-content: space-around;
-		width: 100%;
-	}
 	.selectionProcess {
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
 		flex-direction: column;
-		margin: 2rem 15vw;
-		width: calc(100% - 30vw);
+		justify-content: space-around;
+
+		margin: 2rem 30%;
+
+		height: 90%;
+
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+
+		border-bottom: 1px solid #fff5;
+
+		padding: 7px 0;
+
+		transition: transform 0.5s ease-in-out;
+	}
+
+	.commonSelectionBox {
+		width: calc(100% - 60%);
+
 		backdrop-filter: blur(3px);
 		-webkit-backdrop-filter: blur(3px);
+
 		background-color: #0000;
+
 		box-shadow: var(--boxShadows);
-		border-radius: 1rem;
-		border-bottom: 1px solid #fff5;
-		padding: 7px 0;
+
+		transform-style: preserve-3d;
+		overflow: hidden;
 
 		position: relative;
 
-		overflow: hidden;
+		display: flex;
+		align-items: center;
+	}
+
+	@media screen and (max-width: 768px) {
+		.commonSelectionBox {
+			width: calc(100% - 10%);
+		}
+		.selectionTopHeader {
+			margin: 0 5%;
+		}
+		.selectionProcess {
+			margin: 2rem 5%;
+		}
 	}
 </style>

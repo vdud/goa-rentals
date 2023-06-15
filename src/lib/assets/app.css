@@ -66,3 +66,14 @@ button {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--tertiaryThemeInverted);
 }
+
+.lightSpan {
+	font-weight: 200;
+}
+.boldSpan {
+	font-weight: 600;
+}
+
+p {
+	margin: 0;
+}

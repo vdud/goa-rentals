@@ -16,7 +16,7 @@
 </script>
 
 <div class="selectionProcess">
-	<SelectionProcess />
+	<SelectionProcess {allBikes} />
 </div>
 
 <div class="whyBikeRental">
@@ -56,5 +56,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: end;
+		flex-direction: column;
 	}
 </style>

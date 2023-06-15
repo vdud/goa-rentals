@@ -8,6 +8,7 @@
 
 	import type { LayoutData } from './$types';
 	import LogoImgNav from '$lib/components/LogoImgNav.svelte';
+	import NewLogoImgNav from '$lib/components/NewLogoImgNav.svelte';
 	export let data: LayoutData;
 	const dataBody = JSON.parse(data.body);
 	const allBlogs = dataBody.allBlogs;
@@ -20,6 +21,7 @@
 
 	<div class="LogoImage">
 		<LogoImgNav />
+		<!-- <NewLogoImgNav /> -->
 	</div>
 
 	<div class="Nav mainNav">
