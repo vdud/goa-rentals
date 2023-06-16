@@ -16,7 +16,7 @@
 
 	<h2>Why Bike/Scooty Rentals?</h2>
 	<br />
-	<p>There are several reasons why choosing a bike or scooty rental for travel in a coastal area can be advantageous:</p>
+	<p>There are several reasons why choosing a bike or scooty rental for travel in Goa, India, can be advantageous:</p>
 	<ul>
 		<li>
 			<strong>Flexibility:</strong> Bikes and scooties provide greater flexibility in exploring coastal areas compared to other modes of transportation. They are nimble and can navigate through narrow
@@ -49,11 +49,17 @@
 		</li>
 		<br />
 		<li>
-			<strong>Health and well-being:</strong> Riding a bike or scooty is a physically active mode of transportation that can benefit your health and well-being. Coastal areas often have pleasant weather
-			and scenic routes, providing an enjoyable opportunity for exercise and outdoor activities.
+			<strong>Health and well-being:</strong> Goa's pleasant weather, scenic routes, and coastal landscapes provide an ideal setting for outdoor activities and exercise. Riding a bike or scooty in Goa
+			is not just a mode of transportation but also a physically active way to explore the region. It promotes your health and well-being, allowing you to enjoy the invigorating experience of riding through
+			Goa's scenic countryside and along its breathtaking coastline.
 		</li>
 		<br />
 	</ul>
+	<strong>Also about Enhanced lung health,</strong>
+	<p>
+		Breathing in polluted air can have adverse effects on respiratory health. By opting for a bike or scooty rental in city areas, you can limit your exposure to pollutants, thereby protecting your
+		lung health. Riding a bike or scooty allows you to actively engage in physical activity while minimizing your exposure to pollution, promoting better respiratory function and overall well-being.
+	</p>
 </div>
 
 <style>
