@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { dateFrom, dateTo } from '$lib/stores/bookingStore';
+	import { VehicleName, dateFrom, dateTo, PickupLocation } from '$lib/stores/bookingStore';
 
 	export let allBikes: any[];
 
@@ -34,12 +34,14 @@
 	export let letsGo: any;
 </script>
 
-<div class="inputContent selectLocation">
-	<select class="selectionInput" id="location" name="location">
-		{#each selectLocation as location}
-			<option value={location}>{location.toUpperCase()}</option>
-		{/each}
-	</select>
+<div class="selectionContent">
+	<div class="inputContent selectLocation">
+		<select class="selectionInput" id="location" name="location" bind:value={$PickupLocation}>
+			{#each selectLocation as location}
+				<option value={location}>{location.toUpperCase()}</option>
+			{/each}
+		</select>
+	</div>
 </div>
 
 <div class="selectionContent">
@@ -47,7 +49,7 @@
 		<input
 			class="selectionInput"
 			type="text"
-			name="datetime"
+			name="dateFrom"
 			id="dateFrom"
 			bind:value={$dateFrom}
 			placeholder="Choose Pick Up Time"
@@ -59,7 +61,7 @@
 		<input
 			class="selectionInput"
 			type="text"
-			name="datetime"
+			name="dateTo"
 			id="dateTo"
 			bind:value={$dateTo}
 			placeholder="Choose Drop Off Time"
@@ -69,7 +71,9 @@
 
 <div class="selectionContent">
 	<div class="inputContent selectVehicle">
-		<select class="selectionInput" id="location" name="location">
+		<select class="selectionInput" id="location" name="location" bind:value={$VehicleName}>
+			<option value="Select Vehicle">SELECT VEHICLE</option>
+
 			{#each allBikes as bikes}
 				<option value="{bikes.BrandName} {bikes.VehicleName}">
 					{bikes.BrandName.toUpperCase()}
@@ -89,6 +93,9 @@
 </div>
 
 <style>
+	form {
+		width: 100%;
+	}
 	.selectionContent {
 		display: flex;
 		justify-content: space-around;
@@ -117,6 +124,7 @@
 		border: none;
 		border-radius: 5px;
 		width: 100%;
+
 		margin: 7px 0;
 
 		color: #fff;
@@ -128,23 +136,5 @@
 	.selectionInput::placeholder {
 		color: #fff;
 		text-transform: uppercase;
-	}
-
-	.selectionProcess {
-		flex-direction: column;
-		justify-content: space-around;
-
-		margin: 2rem 15vw;
-
-		height: 90%;
-
-		border-bottom-left-radius: 1rem;
-		border-bottom-right-radius: 1rem;
-
-		border-bottom: 1px solid #fff5;
-
-		padding: 7px 0;
-
-		transition: transform 0.5s ease-in-out;
 	}
 </style>

@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { dateFrom, dateTo } from '../stores/bookingStore';
+	import { VehicleName, PickupLocation, dateFrom, dateTo, bookingId, timeSpan } from '../stores/bookingStore';
 
 	// import { dateFrom, dateTo } from '$lib/stores/bookingStore';
 	import flatpickr from 'flatpickr';
 	import { onMount } from 'svelte';
 	import SelectionPrPageOne from './SelectionPrPageOne.svelte';
-	import {
-		backBtnAnimationIn,
-		skipBtnAnimationIn,
-		letsGoAnimationIn,
-		letsGoAnimationOut
-	} from '$lib/bigFunctions/SelectionProcessFunctions';
+	import { backBtnAnimationIn, skipBtnAnimationIn, letsGoAnimationIn, letsGoAnimationOut } from '$lib/bigFunctions/SelectionProcessFunctions';
+	import SelectionPrPageTwo from './SelectionPrPageTwo.svelte';
 
 	export let allBikes: any[];
+
+	let isPageTwo = false;
+	let isLoading = false;
 
 	const RndmImg = Math.floor(Math.random() * 3) + 1;
 	onMount(() => {
@@ -35,25 +34,102 @@
 	const skipBtnFn = () => {
 		skipBtnAnimationIn();
 		letsGoAnimationIn();
+		setTimeout(() => {
+			isPageTwo = true;
+			letsGoAnimationOut();
+		}, 500);
 	};
 	const backBtnFn = () => {
 		backBtnAnimationIn();
 		letsGoAnimationIn();
-		letsGoAnimationOut();
+		setTimeout(() => {
+			isPageTwo = false;
+			letsGoAnimationOut();
+		}, 500);
 	};
 
-	const letsGo = () => {
+	const letsGo = async () => {
+		if ($PickupLocation === 'Select Location') {
+			alert('Please select a Location');
+			return;
+		}
+		if ($dateFrom === '') {
+			alert('Please select a Pick Up time');
+			return;
+		}
+		if ($dateTo === '') {
+			alert('Please select a Drop Off time');
+			return;
+		}
+		if ($VehicleName === '') {
+			alert('Please select a Vehicle');
+			return;
+		}
+
+		// convert this to number 15-06-2023 12:00
+		const dateFromArr = $dateFrom.split(' ');
+		const dateToArr = $dateTo.split(' ');
+
+		const dateFromArrDate = dateFromArr[0].split('-');
+		const dateToArrDate = dateToArr[0].split('-');
+
+		const dateFromArrTime = dateFromArr[1].split(':');
+		const dateToArrTime = dateToArr[1].split(':');
+
+		const dateFromArrDateNum = dateFromArrDate.map((x: any) => parseInt(x));
+		const dateToArrDateNum = dateToArrDate.map((x: any) => parseInt(x));
+
+		const dateFromArrTimeNum = dateFromArrTime.map((x: any) => parseInt(x));
+		const dateToArrTimeNum = dateToArrTime.map((x: any) => parseInt(x));
+
+		const dateFromObj = new Date(dateFromArrDateNum[2], dateFromArrDateNum[1] - 1, dateFromArrDateNum[0], dateFromArrTimeNum[0], dateFromArrTimeNum[1]);
+
+		const dateToObj = new Date(dateToArrDateNum[2], dateToArrDateNum[1] - 1, dateToArrDateNum[0], dateToArrTimeNum[0], dateToArrTimeNum[1]);
+
+		$timeSpan = dateToObj.getTime() - dateFromObj.getTime();
+
+		if ($timeSpan < 0) {
+			alert('Drop Off time cannot be before Pick Up time');
+			return;
+		}
+
+		isLoading = true;
 		letsGoAnimationIn();
+
+		const response = await fetch('/api/add-page-one-data', {
+			method: 'post',
+			body: JSON.stringify({
+				$PickupLocation,
+				$dateFrom,
+				$dateTo,
+				$VehicleName,
+				$timeSpan
+			}),
+			headers: { 'Content-Type': 'application/json' }
+		});
+		const res = await response.json();
+		console.log('res', res);
+
+		// bookingId.set(res);
+		$bookingId = res;
+
+		if (res.insertForm.acknowledged) {
+			setTimeout(() => {
+				isLoading = false;
+				letsGoAnimationOut();
+				skipBtnAnimationIn();
+
+				isPageTwo = true;
+			}, 500);
+		} else {
+			alert('Something went wrong');
+		}
 	};
 </script>
 
 <div class="backdropImage">
 	<div class="gradientTopBtm" />
-	<img
-		class="imageGoaRentalsWide"
-		src="/images/goa-rentals-insta-{RndmImg}.0.1.webp"
-		alt="Biker gang of Goa"
-	/>
+	<img class="imageGoaRentalsWide" src="/images/goa-rentals-insta-{RndmImg}.0.1.webp" alt="Biker gang of Goa" />
 </div>
 
 <div class="commonSelectionBox selectionTopHeader" id="selectionTopHeader">
@@ -61,7 +137,11 @@
 	<button id="skipBtn" on:click={skipBtnFn} class="backNdSkipBtn skipBtn">Skip 👉</button>
 </div>
 <div class="commonSelectionBox selectionProcess" id="selectionProcess">
-	<SelectionPrPageOne {allBikes} {letsGo} />
+	{#if !isPageTwo}
+		<SelectionPrPageOne {allBikes} {letsGo} />
+	{:else}
+		<SelectionPrPageTwo />
+	{/if}
 </div>
 
 <style>
@@ -86,8 +166,7 @@
 	.gradientTopBtm {
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(180deg, #0000 75%, #eee 99%),
-			linear-gradient(0deg, #0000 75%, #eee 99%);
+		background: linear-gradient(180deg, #0000 75%, #eee 99%), linear-gradient(0deg, #0000 75%, #eee 99%);
 		position: absolute;
 	}
 	.backdropImage {

@@ -74,6 +74,26 @@ button {
 	font-weight: 600;
 }
 
-p {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0;
+}
+
+.readMore {
+	font-weight: 600;
+	color: #fff;
+	background-color: #666;
+	padding: 3px 10px;
+	border-radius: 5px;
+	box-shadow: var(--boxShadows);
+	transition: 0.3s;
+}
+.readMore:hover {
+	background-color: #000;
+	box-shadow: var(--boxShadowsBlur);
 }

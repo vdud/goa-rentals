@@ -12,6 +12,7 @@
 	export let data: PageData;
 
 	const dataBody = JSON.parse(data.body);
+
 	const allBikes = dataBody.allBikes;
 </script>
 

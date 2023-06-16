@@ -1,11 +1,7 @@
 <div class="assured">
 	<div class="assuredBox assuredBikes">
 		<div class="assuredImg">
-			<img
-				class="assuredImgMain"
-				src="/images/assured-images/assured-images-1.webp"
-				alt="Assured Bikes in Goa"
-			/>
+			<img class="assuredImgMain" src="/images/assured-images/assured-images-1.webp" alt="Assured Bikes in Goa" />
 		</div>
 		<div class="assuredText">
 			<p class="pAssured">
@@ -15,11 +11,7 @@
 	</div>
 	<div class="assuredBox affordablePrices">
 		<div class="assuredImg">
-			<img
-				class="assuredImgMain"
-				src="/images/assured-images/assured-images-2.webp"
-				alt="Affordable Bikes and Scooty in Goa"
-			/>
+			<img class="assuredImgMain" src="/images/assured-images/assured-images-2.webp" alt="Affordable Bikes and Scooty in Goa" />
 		</div>
 		<div class="assuredText">
 			<p class="pAssured">
@@ -29,11 +21,7 @@
 	</div>
 	<div class="assuredBox tTheDoor">
 		<div class="assuredImg">
-			<img
-				class="assuredImgMain"
-				src="/images/assured-images/assured-images-3.webp"
-				alt="At the door delivery of bikes in goa"
-			/>
+			<img class="assuredImgMain" src="/images/assured-images/assured-images-3.webp" alt="At the door delivery of bikes in goa" />
 		</div>
 		<div class="assuredText">
 			<p class="pAssured">
@@ -62,7 +50,6 @@
 		justify-content: space-around;
 		align-items: center;
 
-		margin-top: 20px;
 		overflow: hidden;
 	}
 	.assuredImg {
