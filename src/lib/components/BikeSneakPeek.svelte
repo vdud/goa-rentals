@@ -47,7 +47,7 @@
 		position: relative;
 		transition: 0.3s ease-in-out;
 	}
-	.bike:hover {
+	/* .bike:hover {
 		background-color: #c12929;
-	}
+	} */
 </style>

@@ -26,10 +26,6 @@
 			<span class="boldSpan">Vehicle: </span>
 			{VehicleName.toUpperCase()}
 		</p>
-		<p>
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur ipsum fuga facere modi maxime possimus, perferendis sapiente, eligendi nulla fugiat voluptate magni aspernatur laboriosam ex
-			illo beatae asperiores animi. Necessitatibus.
-		</p>
 	</div>
 	<div class="bottomLinks">
 		<p class="lightSpan">
@@ -66,6 +62,10 @@
 		padding: 5px 10px;
 		border-radius: 5px;
 		box-shadow: var(--boxShadows);
+		transition: 0.3s;
+	}
+	.btn:hover {
+		background-color: var(--tertiary);
 	}
 	p,
 	span {
@@ -74,7 +74,7 @@
 	.boxTop {
 		width: fit-content;
 		padding: 0 10px;
-		background-color: var(--primary);
+		background-color: var(--tertiary);
 
 		border-radius: 15px;
 		box-shadow: var(--boxShadows);
@@ -121,13 +121,12 @@
 		justify-content: space-between;
 		position: relative;
 		background-color: var(--primary);
-		box-shadow: var(--boxInsetShadows);
 	}
 	.brandName {
 		width: 100%;
 		text-align: center;
 		padding-top: 5%;
-		background-color: var(--secondary);
+		/* background-color: var(--secondary); */
 	}
 
 	.imgMain {

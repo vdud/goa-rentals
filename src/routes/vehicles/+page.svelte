@@ -43,14 +43,14 @@
 	.boxContent {
 		width: 90%;
 		height: 90%;
-		background-color: #eee;
 		box-shadow: var(--boxShadowsBlur);
 		border-radius: 15px;
+
 		position: relative;
 		overflow: hidden;
 		transition: 0.3s;
 	}
 	.boxContent:hover {
-		transform: scale(1.1);
+		transform: scale(1.03);
 	}
 </style>
