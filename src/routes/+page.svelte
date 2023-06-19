@@ -37,7 +37,7 @@
 </div>
 
 <div class="howItWorks">
-	<HowItWorks />
+	<HowItWorks {allBikes} />
 </div>
 
 <div class="loveItRideIt">

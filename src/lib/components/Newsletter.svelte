@@ -26,14 +26,22 @@
 	}
 </script>
 
-<form on:submit|preventDefault={subscribe}>
+<br />
+<br />
+<br />
+<br />
+<h2 class="headerMailingList">Subscribe to our mailing list ✉️</h2>
+<br />
+<form class="formClass" on:submit|preventDefault={subscribe}>
 	<label for="email" class="sr-only">Enter your email</label>
 	<input bind:value={email} type="email" id="email" name="email" placeholder="bro@letsgo.com" />
 	<button type="submit">
-		<MailIcon width="24" height="24" aria-hidden="true" />
 		<span class="sub">Subscribe</span>
 	</button>
 </form>
+
+<br />
+<br />
 
 <div class="message">
 	{#if error}
@@ -46,6 +54,9 @@
 </div>
 
 <style>
+	.headerMailingList {
+		text-align: center;
+	}
 	.sub {
 		background-color: var(--primaryTheme);
 		padding: 1rem;
@@ -53,39 +64,38 @@
 	}
 	form {
 		display: flex;
-		max-width: 360px;
+		justify-content: center;
 		height: 48px;
-		margin: var(--spacing-16) 0;
-		border-radius: var(--rounded-4);
+		margin: 0 10%;
 		border: 1px solid var(--clr-input-border);
 		box-shadow: var(--shadow-sm);
 
-		background-color: var(--secondary);
 		border-radius: 10px;
-		/* padding-right: 10px; */
 	}
 
 	input {
 		width: 100%;
-		padding: var(--spacing-8) var(--spacing-16);
-		background-color: var(--clr-input-bg);
-		border-radius: var(--rounded-4) 0 0 var(--rounded-4);
+		padding: 1rem;
+		background-color: #fff;
+		border-radius: 20px 0 0 20px;
+		box-shadow: var(--boxInsetShadows);
 		flex: 1;
+		border: none;
+		font-weight: 800;
 	}
 
 	input::placeholder {
 		color: var(--white);
+		font-weight: 400;
 	}
 
 	button {
+		border-radius: 0 20px 20px 0;
+
 		padding: 2px;
 		color: var(--clr-input-txt);
-		background-color: var(--clr-primary);
+		background-color: #bbb;
 		font-weight: 700;
-	}
-
-	button :global(svg) {
-		display: none;
 	}
 
 	.message {

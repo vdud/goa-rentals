@@ -52,7 +52,7 @@
 </div>
 
 <style>
-	.showMoreGradient {
+	/* .showMoreGradient {
 		background: linear-gradient(#eee0, #eee);
 		height: 50px;
 		width: 100%;
@@ -61,7 +61,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
+	} */
 	h2 {
 		text-align: center;
 	}

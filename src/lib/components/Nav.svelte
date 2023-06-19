@@ -4,7 +4,7 @@
 <div class="windowForExtras">
 	<div class="gradientRight" />
 </div>
-<div class="navDiv">
+<div class="navDiv" id="selectionTopHeaderNav">
 	<div class="navContents">
 		<a class="navContent navContent2" href="/vehicles">Vehicles</a>
 		<a class="navContent navContent3" href="/must-visit-places">Must Visit Places in Goa</a>
@@ -68,5 +68,10 @@
 		padding: 5px 10px;
 		/* font-size: 2rem; */
 		border-radius: 5px;
+		transition: 0.3s;
+	}
+	.navContent:hover {
+		background-color: #fff;
+		color: #000;
 	}
 </style>

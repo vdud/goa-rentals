@@ -71,5 +71,9 @@
 		width: 100%;
 		border-radius: 0;
 		background-color: transparent;
+		transition: 0.3s;
+	}
+	p:hover {
+		background-color: #fff;
 	}
 </style>

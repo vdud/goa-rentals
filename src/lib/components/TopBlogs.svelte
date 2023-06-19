@@ -2,23 +2,66 @@
 	export let allBlogs: any[];
 
 	const first3Blogs = allBlogs.slice(0, 3);
-	const restBlogs = allBlogs.slice(3);
+	const restBlogs = allBlogs.slice(0);
 </script>
 
-{#each first3Blogs as blog}
-	<div class="bigBlogs">
-		<a href="/blogs/{blog.slug}">
-			<h2>{blog.articleName}</h2>
-			<p>{blog.articleDescription}</p>
-		</a>
-	</div>
+<h2 class="blogsHeader">Top Blogs</h2>
+{#each first3Blogs as blog, i}
+	<a href="/blogs/{blog.slug}" class="bigBlogs">
+		<h2>{i + 1}. {blog.articleName}</h2>
+		<p>{blog.articleDescription}</p>
+	</a>
 {/each}
 
-{#each restBlogs as blog}
+{#if restBlogs.length > 0}
+	<h2 class="blogsHeader">More Blogs</h2>
 	<div class="smallBlogs">
-		<a href="/blogs/{blog.slug}">
-			<h2>{blog.articleName}</h2>
-			<p>{blog.articleDescription}</p>
-		</a>
+		{#each restBlogs as blog}
+			<a href="/blogs/{blog.slug}" class="aSmallBlogs">
+				<h2>{blog.articleName}</h2>
+				<p>{blog.articleDescription}</p>
+			</a>
+		{/each}
 	</div>
-{/each}
+{/if}
+
+<style>
+	.blogsHeader {
+		text-align: center;
+	}
+	.aSmallBlogs {
+		padding: 8px;
+		border-radius: 5px;
+		transition: background-color 0.3s ease-in-out;
+	}
+	.aSmallBlogs:hover {
+		background-color: var(--primary);
+	}
+	.smallBlogs {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		background-color: #fff;
+		margin: 20px 5px;
+		padding: 30px 5px;
+		border-radius: 5px;
+		box-shadow: var(--boxShadows);
+	}
+	.bigBlogs {
+		background-color: #fff;
+		margin: 20px 5px;
+		padding: 30px 13px;
+		border-radius: 5px;
+		box-shadow: var(--boxShadows);
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-bottom: 0px solid var(--primary);
+		transition: border-bottom 0.3s ease-in-out;
+	}
+	.bigBlogs:hover {
+		border-bottom: 10px solid var(--primary);
+	}
+</style>
