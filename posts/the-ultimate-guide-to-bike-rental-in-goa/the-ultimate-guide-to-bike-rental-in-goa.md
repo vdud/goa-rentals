@@ -7,13 +7,11 @@ published: 2023-5-10
 
 # The Ultimate Guide to Bike Rental in Goa
 
-{% img src="F-Style-Layout-Heatmap.webp" alt="Example of F Style Heat Map Study" %}
-
 ## Table of Contents
 
 ## Single Column Layout
 
-{% img src="F-Style-Layout-Heatmap.webp" alt="Example of F Style Heat Map Study" %}
+{% img src="Z Layout.webp" alt="Example of Z Style" %}
 
 The Ultimate Guide to Bike Rental in Goa
 
@@ -43,7 +41,7 @@ Goarentals.com prioritizes customer safety and ensures that all their bikes are 
 
 Once you have your rented bike, the enchanting wonders of Goa are yours to explore. From the palm-fringed beaches of North Goa, such as Calangute and Baga, to the peaceful fishing villages of South Goa, like Palolem and Agonda, there's no shortage of captivating destinations to visit. Cruise along the winding roads, immerse yourself in Goa's vibrant culture, and savor the local cuisine at beach shacks and quaint cafes along the way.
 
-Responsible Riding, Safety, and Etiquette
+**Responsible Riding, Safety, and Etiquette**
 
 While enjoying your bike rental experience, it's crucial to prioritize responsible riding. Follow traffic rules, wear a helmet at all times, and be mindful of pedestrians and fellow motorists. Respect the environment and Goa's natural beauty by not littering and preserving the cleanliness of the places you visit.
 
