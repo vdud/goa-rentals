@@ -3,6 +3,8 @@
 
 	export let allBikes: any[];
 
+	console.log('allBikes', allBikes);
+
 	const searchVehicle = () => {
 		console.log($dateFrom);
 		console.log($dateTo);
@@ -46,26 +48,12 @@
 
 <div class="selectionContent">
 	<div class="inputContent pickUp">
-		<input
-			class="selectionInput"
-			type="text"
-			name="dateFrom"
-			id="dateFrom"
-			bind:value={$dateFrom}
-			placeholder="Choose Pick Up Time"
-		/>
+		<input class="selectionInput" type="text" name="dateFrom" id="dateFrom" bind:value={$dateFrom} placeholder="Choose Pick Up Time" />
 	</div>
 </div>
 <div class="selectionContent">
 	<div class="inputContent dropOff">
-		<input
-			class="selectionInput"
-			type="text"
-			name="dateTo"
-			id="dateTo"
-			bind:value={$dateTo}
-			placeholder="Choose Drop Off Time"
-		/>
+		<input class="selectionInput" type="text" name="dateTo" id="dateTo" bind:value={$dateTo} placeholder="Choose Drop Off Time" />
 	</div>
 </div>
 
@@ -75,9 +63,9 @@
 			<option value="Select Vehicle">SELECT VEHICLE</option>
 
 			{#each allBikes as bikes}
-				<option value="{bikes.BrandName} {bikes.VehicleName}">
-					{bikes.BrandName.toUpperCase()}
-					{bikes.VehicleName.toUpperCase()}
+				<option value="{bikes.brandName} {bikes.modelName}">
+					{bikes.brandName.toUpperCase()}
+					{bikes.modelName.toUpperCase()}
 				</option>
 			{/each}
 		</select>
@@ -86,9 +74,7 @@
 
 <div class="selectionContent">
 	<div class="inputContent searchVehicleButton">
-		<button on:click={letsGo} class="selectionInput letsGo" on:click={searchVehicle}
-			>Let's Go ➡</button
-		>
+		<button on:click={letsGo} class="selectionInput letsGo" on:click={searchVehicle}>Let's Go ➡</button>
 	</div>
 </div>
 

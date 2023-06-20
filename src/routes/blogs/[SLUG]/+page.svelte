@@ -23,6 +23,6 @@
 	<meta content={image} name="twitter:image" />
 </svelte:head>
 
-<div class="dataContent">
+<div class="dataContent prose">
 	{@html data.content}
 </div>

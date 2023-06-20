@@ -7,9 +7,9 @@
 <h2>All Bikes</h2>
 <div class="allBikes">
 	<div class="allBikesContainer">
-		{#each allBikes as { BrandName, Price, VehicleName, image }, i}
+		{#each allBikes as { brandName, rent, modelName, image }, i}
 			<div class="bike">
-				<AllBikeSlot {BrandName} {Price} {VehicleName} {image} {i} />
+				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} />
 			</div>
 		{/each}
 	</div>
@@ -32,8 +32,8 @@
 	.bike {
 		height: 70vh;
 		width: 300px;
-		margin-left: 20px;
-		margin-top: 20px;
+		margin: 20px;
+		margin-right: 0;
 
 		display: flex;
 		flex-direction: column;

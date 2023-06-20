@@ -1,4 +1,14 @@
 <script lang="ts">
+	const howItWorks = () => {
+		setTimeout(() => {
+			document.getElementById('howItWorks')!.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+		}, 100);
+	};
+	const goToBlogs = () => {
+		setTimeout(() => {
+			document.getElementById('goToBlogs')!.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+		}, 100);
+	};
 </script>
 
 <div class="windowForExtras">
@@ -8,8 +18,8 @@
 	<div class="navContents">
 		<a class="navContent navContent2" href="/vehicles">Vehicles</a>
 		<a class="navContent navContent3" href="/must-visit-places">Must Visit Places in Goa</a>
-		<a class="navContent navContent4" href="/how-it-works">How it Works?</a>
-		<a class="navContent navContent5" href="/blog">Blog</a>
+		<a on:click={howItWorks} class="navContent navContent4" href="/">How it Works?</a>
+		<a on:click={goToBlogs} class="navContent navContent5" href="/">Blogs</a>
 		<a class="navContent navContent6" href="/contact">Contact Us</a>
 	</div>
 </div>

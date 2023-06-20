@@ -50,7 +50,7 @@
 </script>
 
 <br />
-<h2 class="headerMain">How it Works?</h2>
+<h2 class="headerMain" id="howItWorks">How it Works?</h2>
 <br />
 <br />
 
@@ -109,9 +109,9 @@
 				<option value="Select Vehicle">SELECT VEHICLE</option>
 
 				{#each allBikes as bikes}
-					<option value="{bikes.BrandName} {bikes.VehicleName}">
-						{bikes.BrandName.toUpperCase()}
-						{bikes.VehicleName.toUpperCase()}
+					<option value="{bikes.brandName} {bikes.modelName}">
+						{bikes.brandName.toUpperCase()}
+						{bikes.modelName.toUpperCase()}
 					</option>
 				{/each}
 			</select>

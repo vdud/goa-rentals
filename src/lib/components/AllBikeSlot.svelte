@@ -1,9 +1,9 @@
 <script lang="ts">
 	// BrandName, Price, VehicleName, image
 
-	export let BrandName: string;
-	export let Price: string;
-	export let VehicleName: string;
+	export let brandName: string;
+	export let rent: string;
+	export let modelName: string;
 	export let image: string;
 	export let i: number;
 </script>
@@ -13,27 +13,27 @@
 	<button class="btn btnTop"> Hello </button>
 </div>
 <div class="imgContainer">
-	<img class="imgMain" src={image} alt="{VehicleName} by {BrandName} {i + 1}" />
+	<img class="imgMain" src={image} alt="{modelName} by {brandName} {i + 1}" />
 </div>
 <div class="brandTextItems">
 	<div class="gradFromBtm" />
 	<div class="brandName">
 		<p class="lightSpan">
 			<span class="boldSpan">Brand: </span>
-			{BrandName.toUpperCase()}
+			{brandName.toUpperCase()}
 		</p>
 		<p class="lightSpan">
 			<span class="boldSpan">Vehicle: </span>
-			{VehicleName.toUpperCase()}
+			{modelName.toUpperCase()}
 		</p>
 	</div>
 	<div class="bottomLinks">
 		<p class="lightSpan">
 			<span class="boldSpan">Price: </span>
 
-			{Price}
+			{rent}
 		</p>
-		<a href="/bikes/{BrandName}/{VehicleName}">
+		<a href="/bikes/{brandName}/{modelName}">
 			<button class="btn btn-primary">View</button>
 		</a>
 	</div>

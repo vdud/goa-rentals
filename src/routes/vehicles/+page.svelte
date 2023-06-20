@@ -5,15 +5,17 @@
 
 	const dataBody = JSON.parse(data.body);
 
-	const allBikes = dataBody.allBikes;
+	let allBikes: any[] = dataBody.allBikes;
+	let value: any;
 </script>
 
 <br />
+
 <div class="grid">
-	{#each allBikes as { BrandName, Price, VehicleName, image }, i}
+	{#each allBikes as { brandName, rent, modelName, image }, i}
 		<div class="box">
 			<div class="boxContent">
-				<AllBikeSlot {BrandName} {Price} {VehicleName} {image} {i} />
+				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} />
 			</div>
 		</div>
 	{/each}

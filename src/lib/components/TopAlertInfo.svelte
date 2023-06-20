@@ -13,8 +13,7 @@
 		if (!contactId) return;
 
 		if (contactId.innerHTML === contactContent) {
-			contactId.innerHTML = 'Contact Number';
-			contactId.style.backgroundColor = '#ddd';
+			window.location.href = `tel:${contactContent}`;
 		} else {
 			contactId.style.backgroundColor = '#ffe8d6';
 			contactId.innerHTML = contactContent;
@@ -26,8 +25,7 @@
 		if (!eMailId) return;
 
 		if (eMailId.innerHTML === eMailContent) {
-			eMailId.innerHTML = 'eMail';
-			eMailId.style.backgroundColor = '#ddd';
+			window.location.href = `mailto:${eMailContent}?subject=Enquiry&body=Hi Varun,`;
 		} else {
 			eMailId.innerHTML = eMailContent;
 			eMailId.style.backgroundColor = '#ffe8d6';

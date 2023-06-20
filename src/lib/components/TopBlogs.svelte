@@ -5,11 +5,11 @@
 	const restBlogs = allBlogs.slice(0);
 </script>
 
-<h2 class="blogsHeader">Top Blogs</h2>
+<h2 class="blogsHeader" id="goToBlogs">Top Blogs</h2>
 {#each first3Blogs as blog, i}
 	<a href="/blogs/{blog.slug}" class="bigBlogs">
-		<h2>{i + 1}. {blog.articleName}</h2>
-		<p>{blog.articleDescription}</p>
+		<h2 class="h2Blogs">{i + 1}. {blog.articleName}</h2>
+		<p class="pBlogs">{blog.articleDescription}</p>
 	</a>
 {/each}
 
@@ -18,14 +18,20 @@
 	<div class="smallBlogs">
 		{#each restBlogs as blog}
 			<a href="/blogs/{blog.slug}" class="aSmallBlogs">
-				<h2>{blog.articleName}</h2>
-				<p>{blog.articleDescription}</p>
+				<h2 class="h2Blogs">{blog.articleName}</h2>
+				<p class="pBlogs">{blog.articleDescription}</p>
 			</a>
 		{/each}
 	</div>
 {/if}
 
 <style>
+	.h2Blogs {
+		font-size: clamp(1.1rem, 2vw, 2rem);
+	}
+	.pBlogs {
+		font-size: clamp(0.8rem, 2vw, 1.2rem);
+	}
 	.blogsHeader {
 		text-align: center;
 	}
@@ -63,5 +69,9 @@
 	}
 	.bigBlogs:hover {
 		border-bottom: 10px solid var(--primary);
+	}
+
+	h2 {
+		font-size: clamp(1.5rem, 2vw, 2rem);
 	}
 </style>
