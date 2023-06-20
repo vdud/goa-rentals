@@ -7,6 +7,10 @@
 	let success = '';
 
 	async function subscribe() {
+		if (!email) {
+			error = 'Please enter an email';
+			return;
+		}
 		const response = await fetch('/api/subscribe', {
 			method: 'post',
 			body: JSON.stringify(email),
@@ -40,9 +44,6 @@
 	</button>
 </form>
 
-<br />
-<br />
-
 <div class="message">
 	{#if error}
 		<span in:fade class="error">{error}</span>
@@ -53,12 +54,14 @@
 	{/if}
 </div>
 
+<br />
+<br />
+
 <style>
 	.headerMailingList {
 		text-align: center;
 	}
 	.sub {
-		background-color: var(--primaryTheme);
 		padding: 1rem;
 		border-radius: 10px;
 	}
@@ -96,19 +99,36 @@
 		color: var(--clr-input-txt);
 		background-color: #bbb;
 		font-weight: 700;
+		transition: 0.3s;
+	}
+	button:hover {
+		background-color: #fff;
+		box-shadow: var(--boxShadows);
 	}
 
 	.message {
 		margin-bottom: var(--spacing-16);
 		font-weight: 700;
+
+		text-align: center;
+		padding: 0.5rem 1rem;
+
+		padding-top: 1rem;
 	}
 
 	.message .error {
-		color: hsl(9 100% 64%);
+		color: var(--red);
+		padding: 0.2rem 0.6rem;
+		border-radius: 0.3rem;
+
+		box-shadow: var(--boxShadows);
 	}
 
 	.message .success {
-		color: var(--clr-primary);
+		color: green;
+		padding: 0.2rem 0.6rem;
+		border-radius: 0.3rem;
+		box-shadow: var(--boxShadows);
 	}
 
 	@media (min-width: 860px) {

@@ -30,6 +30,6 @@
 <style>
 	.prose {
 		margin: 5px;
-		margin-bottom: 100px;
+		margin-bottom: 60px;
 	}
 </style>

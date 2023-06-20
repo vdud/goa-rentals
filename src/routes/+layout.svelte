@@ -2,6 +2,11 @@
 	import '$lib/assets/app.css';
 	import '$lib/assets/prose.css';
 
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+
+	inject({ mode: dev ? 'development' : 'production' });
+
 	import Newsletter from '$lib/components/Newsletter.svelte';
 	import TopAlertInfo from '$lib/components/TopAlertInfo.svelte';
 	import Nav from '$lib/components/Nav.svelte';
