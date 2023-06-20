@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '$lib/assets/app.css';
+	import '$lib/assets/prose.css';
 
 	import Newsletter from '$lib/components/Newsletter.svelte';
 	import TopAlertInfo from '$lib/components/TopAlertInfo.svelte';

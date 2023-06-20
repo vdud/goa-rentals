@@ -26,3 +26,10 @@
 <div class="dataContent prose">
 	{@html data.content}
 </div>
+
+<style>
+	.prose {
+		margin: 5px;
+		margin-bottom: 100px;
+	}
+</style>
