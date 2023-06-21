@@ -44,7 +44,7 @@
 			disableMobile: true,
 			dateFormat: 'd-m-Y H:i',
 			minDate: 'today',
-			maxDate: new Date().fp_incr(14)
+			maxDate: new Date().fp_incr(1000)
 		});
 	});
 </script>

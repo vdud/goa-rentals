@@ -7,6 +7,7 @@
 	import SelectionPrPageOne from './SelectionPrPageOne.svelte';
 	import { backBtnAnimationIn, skipBtnAnimationIn, letsGoAnimationIn, letsGoAnimationOut } from '$lib/bigFunctions/SelectionProcessFunctions';
 	import SelectionPrPageTwo from './SelectionPrPageTwo.svelte';
+	import { timeSpanCal } from '$lib/bigFunctions/timeFn';
 
 	export let allBikes: any[];
 
@@ -27,7 +28,7 @@
 			disableMobile: true,
 			dateFormat: 'd-m-Y H:i',
 			minDate: 'today',
-			maxDate: new Date().fp_incr(14)
+			maxDate: new Date().fp_incr(1000)
 		});
 	});
 
@@ -67,26 +68,7 @@
 		}
 
 		// convert this to number 15-06-2023 12:00
-		const dateFromArr = $dateFrom.split(' ');
-		const dateToArr = $dateTo.split(' ');
-
-		const dateFromArrDate = dateFromArr[0].split('-');
-		const dateToArrDate = dateToArr[0].split('-');
-
-		const dateFromArrTime = dateFromArr[1].split(':');
-		const dateToArrTime = dateToArr[1].split(':');
-
-		const dateFromArrDateNum = dateFromArrDate.map((x: any) => parseInt(x));
-		const dateToArrDateNum = dateToArrDate.map((x: any) => parseInt(x));
-
-		const dateFromArrTimeNum = dateFromArrTime.map((x: any) => parseInt(x));
-		const dateToArrTimeNum = dateToArrTime.map((x: any) => parseInt(x));
-
-		const dateFromObj = new Date(dateFromArrDateNum[2], dateFromArrDateNum[1] - 1, dateFromArrDateNum[0], dateFromArrTimeNum[0], dateFromArrTimeNum[1]);
-
-		const dateToObj = new Date(dateToArrDateNum[2], dateToArrDateNum[1] - 1, dateToArrDateNum[0], dateToArrTimeNum[0], dateToArrTimeNum[1]);
-
-		$timeSpan = dateToObj.getTime() - dateFromObj.getTime();
+		$timeSpan = timeSpanCal($dateFrom, $dateTo);
 
 		if ($timeSpan < 0) {
 			alert('Drop Off time cannot be before Pick Up time');
@@ -108,10 +90,9 @@
 			headers: { 'Content-Type': 'application/json' }
 		});
 		const res = await response.json();
-		console.log('res', res);
 
 		// bookingId.set(res);
-		$bookingId = res;
+		$bookingId = res.insertForm.insertedId;
 
 		if (res.insertForm.acknowledged) {
 			setTimeout(() => {

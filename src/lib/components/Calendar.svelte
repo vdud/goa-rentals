@@ -14,14 +14,6 @@
 			maxDate: new Date().fp_incr(14)
 		});
 	});
-
-	$: console.log(dateFrom);
 </script>
 
-<input
-	type="text"
-	name="datetime"
-	id="datetime"
-	bind:value={$dateFrom}
-	placeholder="Choose Date and Time"
-/>
+<input type="text" name="datetime" id="datetime" bind:value={$dateFrom} placeholder="Choose Date and Time" />

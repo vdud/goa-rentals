@@ -3,13 +3,6 @@
 
 	export let allBikes: any[];
 
-	console.log('allBikes', allBikes);
-
-	const searchVehicle = () => {
-		console.log($dateFrom);
-		console.log($dateTo);
-	};
-
 	const selectLocation = [
 		'Select Location',
 		'candolim',
@@ -74,7 +67,7 @@
 
 <div class="selectionContent">
 	<div class="inputContent searchVehicleButton">
-		<button on:click={letsGo} class="selectionInput letsGo" on:click={searchVehicle}>Let's Go ➡</button>
+		<button on:click={letsGo} class="selectionInput letsGo">Let's Go ➡</button>
 	</div>
 </div>
 

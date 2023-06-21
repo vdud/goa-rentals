@@ -39,11 +39,9 @@
 		});
 		const res = await response.json();
 
-		console.log('res', res);
-
 		if (res.success) {
-			$bookingId = {};
-			window.location.href = '/booking-success';
+			$bookingId = res.bookingId;
+			window.location.href = `/booking-success/${$bookingId}`;
 		}
 	};
 </script>

@@ -69,19 +69,26 @@
 		padding-right: 100px;
 		font-size: 0.8rem;
 		margin-top: 0.5rem;
+
+		display: flex;
 	}
 	.navContent {
-		width: fit-content;
+		width: max-content;
+
 		margin: 0 9px;
 		background-color: #ddd;
 		box-shadow: var(--boxShadows);
 		padding: 5px 10px;
 		/* font-size: 2rem; */
 		border-radius: 5px;
+
+		/* display: flex;
+		align-items: center;
+		justify-content: center; */
+
 		transition: 0.3s;
 	}
 	.navContent:hover {
 		background-color: #fff;
-		color: #000;
 	}
 </style>

@@ -7,9 +7,44 @@
 			<span class="spans span2">Rentals</span>
 		</h1>
 	</a>
+
+	<a href="/track-your-vehicle" class="trackYourVehicle">
+		<i class="fa-solid fa-truck-fast" />
+		<p class="TYVFa">TRACK YOUR VEHICLE</p>
+	</a>
 </div>
 
 <style>
+	.TYVFa {
+		height: 3.5rem;
+
+		text-align: center;
+		font-weight: 200;
+		font-size: 0.75rem;
+		text-decoration: underline;
+	}
+	i {
+		height: 3.5rem;
+		display: flex;
+		align-items: end;
+		font-size: 2rem;
+		justify-content: center;
+
+		scale: 1;
+	}
+	.trackYourVehicle {
+		width: 7rem;
+		height: 7rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.navFlexContainer {
+		display: flex;
+		justify-content: space-between;
+	}
 	.imgClass {
 		height: 7rem;
 		width: 7rem;

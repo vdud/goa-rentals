@@ -11,7 +11,10 @@ export const POST: RequestHandler = async ({ request }) => {
 		dateFrom: $dateFrom,
 		dateTo: $dateTo,
 		VehicleName: $VehicleName,
-		timeSpan: $timeSpan
+		timeSpan: $timeSpan,
+		currentTime: new Date(),
+		isHalf: true,
+		isJustContact: false
 	});
 
 	return json({ insertForm });
