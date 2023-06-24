@@ -46,6 +46,15 @@ export const POST: RequestHandler = async ({ request, res }) => {
 		cancel_url: 'https://www.goarentals.com/cancel'
 	});
 
+	forms.updateOne(
+		{ _id: new ObjectId(bookingId) },
+		{
+			$set: {
+				paymentSessionId: session.id
+			}
+		}
+	);
+
 	sendEmail(
 		bookingForm.Email,
 		'Complete The Payment',

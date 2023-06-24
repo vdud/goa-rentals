@@ -24,6 +24,20 @@
 	console.log('vehicleBody', vehicleBody);
 
 	const payNow = async () => {
+		function isPopupBlockerEnabled() {
+			var popupWindow = window.open('', '_blank', 'width=100,height=100');
+			if (!popupWindow || popupWindow.closed || typeof popupWindow.closed == 'undefined' || typeof popupWindow === 'undefined') {
+				return true; // Popup was blocked
+			}
+			popupWindow.close();
+			return false; // Popup was not blocked
+		}
+
+		// Usage example
+		if (isPopupBlockerEnabled()) {
+			alert('Popup blocker is enabled. Please disable it to allow popups.');
+		}
+
 		const response = await fetch('/api/checkout-sessions', {
 			// http://localhost:5173/api/stripeCheckout
 			method: 'POST',
@@ -38,6 +52,7 @@
 
 		// open in new tab
 		// Open the payment link in a new tab
+		// const paymentWindow = window.open(paymentUrl, '_blank', (rel = 'noopener noreferrer'));
 		const paymentWindow = window.open(paymentUrl, '_blank');
 		console.log('paymentWindow', paymentWindow);
 
@@ -74,12 +89,12 @@
 			// clearInterval(checkPaymentStatus);
 
 			// // Close the payment window and clear the interval when it is closed
-			// const closePaymentWindow = () => {
-			// 	clearInterval(checkPaymentStatus);
-			// 	paymentWindow.close();
-			// };
+			const closePaymentWindow = () => {
+				clearInterval(checkPaymentStatus);
+				paymentWindow.close();
+			};
 
-			// paymentWindow.addEventListener('beforeunload', closePaymentWindow);
+			paymentWindow.addEventListener('beforeunload', closePaymentWindow);
 		} else {
 			console.error('Unable to open payment window. Please check your popup blocker settings.');
 		}
