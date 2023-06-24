@@ -2,6 +2,9 @@ import Stripe from 'stripe';
 // const stripe = require('stripe')(import.meta.env.STRIPE_SECRET_KEY);
 //  type script
 import { json } from '@sveltejs/kit';
+
+import { sendEmail } from '$lib/bigFunctions/smtpEmail';
+
 import { ObjectId } from 'mongodb';
 
 import { forms, vehicles } from '$db/collections';
