@@ -83,7 +83,7 @@ export const calculateTimeSpan = (timeSpan: number) => {
 	return timeComponents.join(' ');
 };
 
-export const timeSpanCal = (dateFrom: any, dateTo: any) => {
+export const timeSpanCal = (dateFrom, dateTo) => {
 	const dateFromArr = dateFrom.split(' ');
 	const dateToArr = dateTo.split(' ');
 
@@ -105,4 +105,26 @@ export const timeSpanCal = (dateFrom: any, dateTo: any) => {
 
 	const timeSpan = dateToObj.getTime() - dateFromObj.getTime();
 	return timeSpan;
+};
+
+export const timeSpanRentCal = (data) => {
+	console.log('timeSpan', data.timeSpan);
+	console.log('rent', data.rent);
+	const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+	const timeSpanInDays = Math.ceil(data.timeSpan / oneDay);
+
+	// Calculate rents for different time spans
+	const dailyRent = data.rent * timeSpanInDays;
+
+	const weeks = Math.ceil(timeSpanInDays / 7);
+	const weeklyRent = data.rent * weeks * 7 * 0.9; // 10% discount for weekly rent
+
+	const months = Math.ceil(timeSpanInDays / 30);
+	const monthlyRent = data.rent * months * 30 * 0.8; // 20% discount for monthly rent
+
+	return `
+		${dailyRent},
+		${weeklyRent},
+		${monthlyRent}
+		`;
 };

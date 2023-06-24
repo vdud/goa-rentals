@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { perDayRentCalc, totalRentperDay } from '$lib/bigFunctions/rentCalc';
+	import { timeSpan } from '$lib/stores/bookingStore';
+
 	// BrandName, Price, VehicleName, image
 
 	export let brandName: string;
@@ -6,6 +9,10 @@
 	export let modelName: string;
 	export let image: string;
 	export let i: number;
+	export let _id: string;
+	export let allBikes: any[];
+
+	console.log('$timeSpan', $timeSpan);
 </script>
 
 <div class="topLinks">
@@ -30,8 +37,18 @@
 	<div class="bottomLinks">
 		<p class="lightSpan">
 			<span class="boldSpan">Price: </span>
+			<!-- Rs -->
 
-			{rent}
+			₹
+
+			{#if $timeSpan === 0}
+				<span>{rent}</span>
+				<span style="font-size: .66rem; opacity: 0.3; font-weight:800;">Per Day</span>
+			{:else}
+				<!-- <span> {perDayRentCalc({ $timeSpan, $VehicleId: _id, allBikes })}</span> -->
+				<span> {totalRentperDay($timeSpan, rent)}</span>
+				<span style="font-size: .66rem; opacity: 0.3; font-weight:800;">Per Day :After Discount</span>
+			{/if}
 		</p>
 		<a href="/bikes/{brandName}/{modelName}">
 			<button class="btn btn-primary">View</button>

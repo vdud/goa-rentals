@@ -7,9 +7,9 @@
 <h2>All Bikes</h2>
 <div class="allBikes">
 	<div class="allBikesContainer">
-		{#each allBikes as { brandName, rent, modelName, image }, i}
+		{#each allBikes as { brandName, rent, modelName, image, _id }, i}
 			<div class="bike">
-				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} />
+				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} {_id} {allBikes} />
 			</div>
 		{/each}
 	</div>

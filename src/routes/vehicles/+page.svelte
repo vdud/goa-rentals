@@ -7,15 +7,16 @@
 
 	let allBikes: any[] = dataBody.allBikes;
 	let value: any;
+	console.log('allBikes', allBikes);
 </script>
 
 <br />
 
 <div class="grid">
-	{#each allBikes as { brandName, rent, modelName, image }, i}
+	{#each allBikes as { _id, brandName, rent, modelName, image }, i}
 		<div class="box">
 			<div class="boxContent">
-				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} />
+				<AllBikeSlot {brandName} {rent} {modelName} {image} {i} {_id} {allBikes} />
 			</div>
 		</div>
 	{/each}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { VehicleName, dateFrom, dateTo, PickupLocation } from '$lib/stores/bookingStore';
+	import { VehicleId, dateFrom, dateTo, PickupLocation } from '$lib/stores/bookingStore';
 	import flatpickr from 'flatpickr';
 	import { onMount } from 'svelte';
 
@@ -105,11 +105,11 @@
 		<h2 class="textStyle">4. Select Vehicle</h2>
 		<p class="textStyle pTextStyle">Choose your preferred vehicle from our extensive fleet.</p>
 		<div class="selection selection2">
-			<select class="selectionInput" id="location" name="location" bind:value={$VehicleName}>
+			<select class="selectionInput" id="location" name="location" bind:value={$VehicleId}>
 				<option value="Select Vehicle">SELECT VEHICLE</option>
 
 				{#each allBikes as bikes}
-					<option value="{bikes.brandName} {bikes.modelName}">
+					<option value={bikes._id}>
 						{bikes.brandName.toUpperCase()}
 						{bikes.modelName.toUpperCase()}
 					</option>

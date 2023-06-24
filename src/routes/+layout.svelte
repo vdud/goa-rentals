@@ -2,6 +2,17 @@
 	import '$lib/assets/app.css';
 	import '$lib/assets/prose.css';
 
+	import { onMount } from 'svelte';
+	import { loadStripe } from '@stripe/stripe-js';
+	import { PUBLIC_STRIPE_KEY } from '$env/static/public';
+
+	let stripe: any = null;
+	onMount(async () => {
+		console.log('PUBLIC_STRIPE_KEY', PUBLIC_STRIPE_KEY);
+		stripe = await loadStripe(PUBLIC_STRIPE_KEY);
+		console.log('stripe', stripe);
+	});
+
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 

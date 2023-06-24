@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { VehicleName, PickupLocation, dateFrom, dateTo, bookingId, timeSpan } from '../stores/bookingStore';
+	import { VehicleId, PickupLocation, dateFrom, dateTo, bookingId, timeSpan } from '../stores/bookingStore';
 
 	// import { dateFrom, dateTo } from '$lib/stores/bookingStore';
 	import flatpickr from 'flatpickr';
@@ -8,6 +8,7 @@
 	import { backBtnAnimationIn, skipBtnAnimationIn, letsGoAnimationIn, letsGoAnimationOut } from '$lib/bigFunctions/SelectionProcessFunctions';
 	import SelectionPrPageTwo from './SelectionPrPageTwo.svelte';
 	import { timeSpanCal } from '$lib/bigFunctions/timeFn';
+	import { perDayRentCalc, timeSpanRentCalFromAllBikes, totalRentperDay } from '$lib/bigFunctions/rentCalc';
 
 	export let allBikes: any[];
 
@@ -49,6 +50,8 @@
 		}, 500);
 	};
 
+	let discount = 'daily';
+
 	const letsGo = async () => {
 		if ($PickupLocation === 'Select Location') {
 			alert('Please select a Location');
@@ -62,7 +65,7 @@
 			alert('Please select a Drop Off time');
 			return;
 		}
-		if ($VehicleName === '') {
+		if ($VehicleId === '' || $VehicleId === 'Select Vehicle') {
 			alert('Please select a Vehicle');
 			return;
 		}
@@ -78,14 +81,19 @@
 		isLoading = true;
 		letsGoAnimationIn();
 
+		const totalRent = timeSpanRentCalFromAllBikes({ $timeSpan, $VehicleId, allBikes });
+		const overallBikeRent = perDayRentCalc({ $timeSpan, $VehicleId, allBikes });
+		console.log('overallBikeRent', overallBikeRent);
 		const response = await fetch('/api/add-page-one-data', {
 			method: 'post',
 			body: JSON.stringify({
 				$PickupLocation,
 				$dateFrom,
 				$dateTo,
-				$VehicleName,
-				$timeSpan
+				$VehicleId,
+				$timeSpan,
+				totalRent,
+				discount: overallBikeRent.discount
 			}),
 			headers: { 'Content-Type': 'application/json' }
 		});

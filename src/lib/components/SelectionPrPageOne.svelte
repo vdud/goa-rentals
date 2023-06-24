@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { VehicleName, dateFrom, dateTo, PickupLocation } from '$lib/stores/bookingStore';
+	import { VehicleId, dateFrom, dateTo, PickupLocation } from '$lib/stores/bookingStore';
 
 	export let allBikes: any[];
 
@@ -52,11 +52,11 @@
 
 <div class="selectionContent">
 	<div class="inputContent selectVehicle">
-		<select class="selectionInput" id="location" name="location" bind:value={$VehicleName}>
+		<select class="selectionInput" id="location" name="location" bind:value={$VehicleId}>
 			<option value="Select Vehicle">SELECT VEHICLE</option>
 
 			{#each allBikes as bikes}
-				<option value="{bikes.brandName} {bikes.modelName}">
+				<option value={bikes._id}>
 					{bikes.brandName.toUpperCase()}
 					{bikes.modelName.toUpperCase()}
 				</option>

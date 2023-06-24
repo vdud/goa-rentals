@@ -1,14 +1,20 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
-import { forms } from '$db/collections';
+import { calculateTimeSpan, timeSpanRentCal } from '$lib/bigFunctions/timeFn';
+
+import { forms, vehicles } from '$db/collections';
 import { ObjectId } from 'mongodb';
 import { bookingId } from '$lib/stores/bookingStore';
+
+import { sendEmail } from '$lib/bigFunctions/smtpEmail';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const { $bookingId, allData } = await request.json();
 
 	console.log('$bookingId, allData ', $bookingId, allData);
+
+	sendEmail(allData.Email, 'Booking on Goa Rentals', `Hello ${allData.Name},\n\nThank you for booking with us. We will get back to you shortly.\n\nRegards,\nGoa Rentals`);
 
 	if ($bookingId === undefined) {
 		const bookingId = await forms.insertOne({
@@ -18,7 +24,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			isJustContact: true,
 			isHalf: true
 		});
-		console.log('bookingId', bookingId);
+
+		sendEmail(
+			'varundudeja96@gmail.com',
+			'Someone Booked a Ride',
+			`Checkout the details of the booking:\n\nName: ${allData.Name}\nEmail: ${allData.Email}\nPhone Number: ${allData.PhoneNumber}\n\nRegards,\nGoa Rentals`
+		);
+
 		return json({ success: true, bookingId: bookingId.insertedId });
 	} else {
 		await forms.updateOne(
@@ -29,11 +41,28 @@ export const POST: RequestHandler = async ({ request }) => {
 					Email: allData.Email,
 					PhoneNumber: allData.PhoneNumber,
 					isHalf: false,
-					isJustContact: false
+					isJustContact: false,
+					paymentStatus: 'unpaid'
 				}
 			},
 			{ upsert: true }
 		);
+		const findFullFOrm = await forms.findOne({ _id: new ObjectId($bookingId) });
+		console.log('findFullFOrm._id', findFullFOrm.VehicleId);
+		const findVehicle = await vehicles.findOne({ _id: new ObjectId(findFullFOrm.VehicleId) });
+		console.log('findVehicle', findVehicle);
+		sendEmail(
+			'varundudeja96@gmail.com',
+			'Someone Booked a Ride',
+			`Checkout the details of the booking:\n\nName: ${allData.Name}\nEmail: ${allData.Email}\nPhone Number: ${allData.PhoneNumber}\n\nRegards,\nGoa Rentals and other details are:\n\n Tracking Id: ${
+				findFullFOrm._id
+			} \n\n dateFrom: ${findFullFOrm.dateFrom} \n\n dateTo: ${findFullFOrm.dateTo}
+			\n\n VehicleName: ${findVehicle.brandName} ${findVehicle.modelName} \n\n timeSpan: ${calculateTimeSpan(findFullFOrm.timeSpan)} \n\n TotalRent: ${timeSpanRentCal({
+				timeSpan: findFullFOrm.timeSpan,
+				rent: findVehicle.rent
+			})} \n\n Regards,\nGoa Rentals)}`
+		);
+		console.log('bookingId', findFullFOrm);
 
 		return json({ bookingId: $bookingId, success: true });
 	}
