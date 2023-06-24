@@ -6,13 +6,13 @@ export const sendEmail = async (to, subject, message) => {
 		port: 465,
 		secure: true,
 		auth: {
-			user: 'bookings@goarentals.in',
+			user: import.meta.env.VITE_SMTP_EMAIL_USERNAME,
 			pass: import.meta.env.VITE_SMTP_EMAIL_PASSWORD
 		}
 	});
 
 	const mailOptions = {
-		from: 'bookings@goarentals.in',
+		from: import.meta.env.VITE_SMTP_EMAIL_USERNAME,
 		to: to,
 		subject: subject,
 		text: message
