@@ -43,6 +43,13 @@ export const POST: RequestHandler = async ({ request, res }) => {
 		cancel_url: 'https://www.goarentals.com/cancel'
 	});
 
+	sendEmail(
+		allData.Email,
+		'Complete The Payment',
+		`
+	Hello ${allData.Name},\n\nThank you for booking with us. Please complete the payment by clicking on the link below.\n\n${session.url}\n\nRegards,\nGoa Rentals`
+	);
+
 	return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), {
 		status: 200,
 		headers: { 'content-type': 'application/json' }
