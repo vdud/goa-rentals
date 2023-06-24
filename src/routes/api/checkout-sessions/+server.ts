@@ -47,10 +47,10 @@ export const POST: RequestHandler = async ({ request, res }) => {
 	});
 
 	sendEmail(
-		allData.Email,
+		bookingForm.Email,
 		'Complete The Payment',
 		`
-	Hello ${allData.Name},\n\nThank you for booking with us. Please complete the payment by clicking on the link below.\n\n${session.url}\n\nRegards,\nGoa Rentals`
+	Hello ${bookingForm.Name},\n\nThank you for booking with us. Please complete the payment by clicking on the link below.\n\n${session.url}\n\nRegards,\nGoa Rentals`
 	);
 
 	return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), {
