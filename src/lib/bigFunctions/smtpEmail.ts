@@ -7,7 +7,7 @@ export const sendEmail = async (to, subject, message) => {
 		secure: true,
 		auth: {
 			user: 'bookings@goarentals.in',
-			pass: 'sodHy7-ramsim-zorsis'
+			pass: import.meta.env.VITE_SMTP_EMAIL_PASSWORD
 		}
 	});
 

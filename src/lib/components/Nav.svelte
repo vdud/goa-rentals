@@ -17,7 +17,7 @@
 <div class="navDiv" id="selectionTopHeaderNav">
 	<div class="navContents">
 		<a class="navContent navContent2" href="/vehicles">Vehicles</a>
-		<a class="navContent navContent3" href="/blogs/the-ultimate-guide-to-bike-rental-in-goa">Must Visit Places in Goa</a>
+		<a class="navContent navContent3" href="/blogs/must-visit-places-in-goa">Must Visit Places in Goa</a>
 		<a on:click={howItWorks} class="navContent navContent4" href="/">How it Works?</a>
 		<a on:click={goToBlogs} class="navContent navContent5" href="/">Blogs</a>
 		<a class="navContent navContent6" href="/contact">Contact Us</a>
