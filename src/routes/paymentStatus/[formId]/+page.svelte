@@ -67,6 +67,10 @@
 </div>
 
 <style>
+	.payNow {
+		left: 0;
+		text-align: left;
+	}
 	.AbsBtn {
 		position: relative;
 		width: 100%;
