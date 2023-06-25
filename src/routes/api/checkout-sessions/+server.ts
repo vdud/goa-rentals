@@ -29,6 +29,13 @@ export const POST: RequestHandler = async ({ request, res }) => {
 	console.log('timeSPanInDays', timeSPanInDays);
 	console.log('discount', discount);
 
+	if (bookingForm.paymentStatus === 'paid') {
+		return new Response(JSON.stringify({ url: '', sessionId: '' }), {
+			status: 200,
+			headers: { 'content-type': 'application/json' }
+		});
+	}
+
 	const session = await stripe.checkout.sessions.create({
 		line_items: [
 			{
@@ -42,8 +49,8 @@ export const POST: RequestHandler = async ({ request, res }) => {
 				coupon: discount
 			}
 		],
-		success_url: 'https://www.goarentals.com/success',
-		cancel_url: 'https://www.goarentals.com/cancel'
+		success_url: `${import.meta.env.VITE_HOME_PAGE}/paymentStatus/${bookingId}`,
+		cancel_url: `${import.meta.env.VITE_HOME_PAGE}/paymentStatus/${bookingId}`
 	});
 
 	forms.updateOne(
@@ -52,7 +59,8 @@ export const POST: RequestHandler = async ({ request, res }) => {
 			$set: {
 				paymentSessionId: session.id
 			}
-		}
+		},
+		{ upsert: true }
 	);
 
 	sendEmail(
