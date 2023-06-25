@@ -4,7 +4,7 @@
 	let contactId: HTMLElement | null;
 	let eMailId: HTMLElement | null;
 
-	const contactContent = '+91 8700088011';
+	const contactContent = '918700088011';
 	const eMailContent = 'varundudeja96@gmail.com';
 
 	const contactBtnClick = () => {
@@ -12,13 +12,14 @@
 
 		if (!contactId) return;
 
-		if (contactId.innerHTML === contactContent) {
-			window.location.href = `tel:${contactContent}`;
+		if (contactId.innerHTML === `+${contactContent}`) {
+			window.location.href = `https://wa.me/${contactContent}`;
 		} else {
 			contactId.style.backgroundColor = '#ffe8d6';
-			contactId.innerHTML = contactContent;
+			contactId.innerHTML = '+' + contactContent;
 		}
 	};
+
 	const eMailBtnClick = () => {
 		const eMailId = document.getElementById('eMailId');
 
