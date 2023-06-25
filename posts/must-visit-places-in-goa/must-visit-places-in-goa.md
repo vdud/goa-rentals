@@ -19,7 +19,7 @@ It is one of the most popular and largest beaches in Goa, known for its golden s
 
 ## Baga Beach
 
-{% img src="Baga.webp" alt="Baga, Goa, India" %}
+{% img src="baga.webp" alt="Baga, Goa, India" %}
 Located close to Calangute Beach, Baga Beach is famous for its happening nightlife, beach shacks, and thrilling water sports.
 
 ## Anjuna Beach

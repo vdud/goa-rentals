@@ -9,8 +9,6 @@ published: 2023-5-10
 
 ## Table of Contents
 
-<!-- {% img src="Z Layout.webp" alt="Example of Z Style" %} -->
-
 Goa, known for its breathtaking beaches, vibrant nightlife, and picturesque landscapes, is undoubtedly a traveler's paradise. Exploring this tropical haven becomes even more convenient and thrilling when you have a trusty set of wheels at your disposal. And what better way to navigate the scenic roads and hidden gems than by renting a bike? With numerous bike rental options available, this ultimate guide will ensure you have an unforgettable two-wheeled adventure in Goa.
 
 ## Choosing the Right Bike Rental Company
