@@ -14,7 +14,6 @@
 	const dataBody = JSON.parse(data.body);
 
 	const allBikes = dataBody.allBikes;
-	console.log('allBikes', allBikes);
 </script>
 
 <div class="selectionProcess">

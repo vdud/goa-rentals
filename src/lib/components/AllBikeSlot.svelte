@@ -11,8 +11,6 @@
 	export let i: number;
 	export let _id: string;
 	export let allBikes: any[];
-
-	console.log('$timeSpan', $timeSpan);
 </script>
 
 <div class="topLinks">

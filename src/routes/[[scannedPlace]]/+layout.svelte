@@ -8,9 +8,7 @@
 
 	let stripe: any = null;
 	onMount(async () => {
-		console.log('PUBLIC_STRIPE_KEY', PUBLIC_STRIPE_KEY);
 		stripe = await loadStripe(PUBLIC_STRIPE_KEY);
-		console.log('stripe', stripe);
 	});
 
 	import { dev } from '$app/environment';

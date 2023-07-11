@@ -83,7 +83,6 @@
 
 		const totalRent = timeSpanRentCalFromAllBikes({ $timeSpan, $VehicleId, allBikes });
 		const overallBikeRent = perDayRentCalc({ $timeSpan, $VehicleId, allBikes });
-		console.log('overallBikeRent', overallBikeRent);
 		const response = await fetch('/api/add-page-one-data', {
 			method: 'post',
 			body: JSON.stringify({
