@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
 import { subscriber } from '$db/collections';
+import { sendEmail } from '$lib/bigFunctions/smtpEmail';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const email = await request.json();
@@ -29,6 +30,11 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	await subscriber.insertOne({ email });
+	await sendEmail(
+		email,
+		'You have subscribed to Goa Rentals',
+		`Hello,\n\nThank you for subscribing to Goa Rentals. We will keep you updated with our latest offers, blogs.\nBasically everything about Goa \n\nRegards,\nGoa Rentals`
+	);
 
 	return json(
 		{ success: 'Thank you for subscribing! 🥳' },

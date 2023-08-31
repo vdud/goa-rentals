@@ -150,6 +150,7 @@ th {
 	margin: 10px;
 
 	list-style-position: inside;
+	width: 80%;
 }
 
 .prose li a {

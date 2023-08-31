@@ -21,9 +21,6 @@
 
 	$bookingId = dataBody._id;
 
-	console.log('data.body', dataBody);
-	console.log('vehicleBody', vehicleBody);
-
 	const payRightNow = () => {
 		const payNowDiv = document.getElementById('payNowDiv') as HTMLDivElement;
 		payNowDiv.innerHTML = '';

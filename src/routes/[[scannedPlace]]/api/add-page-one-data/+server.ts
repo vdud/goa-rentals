@@ -2,6 +2,9 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
 import { forms } from '$db/collections';
+import { sendEmail } from '$lib/bigFunctions/smtpEmail';
+import { timeSpan } from '$lib/stores/bookingStore';
+import { calculateTimeSpan } from '$lib/bigFunctions/timeFn';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const { $PickupLocation, $dateFrom, $dateTo, $VehicleId, $timeSpan, totalRent, discount } = await request.json();
@@ -19,6 +22,13 @@ export const POST: RequestHandler = async ({ request }) => {
 		isJustContact: false,
 		discount: discount
 	});
+
+	console.log('Sending Email');
+	await sendEmail(
+		'varundudejaapple@gmail.com',
+		'Someone is trying to book a ride',
+		`Checkout the details of the booking:\n\nPickup Location: ${$PickupLocation}\ntimeSpan: ${calculateTimeSpan($timeSpan)}\ntotalRent: ${totalRent}\n\nRegards,\nGoa Rentals`
+	);
 
 	return json({ insertForm });
 };

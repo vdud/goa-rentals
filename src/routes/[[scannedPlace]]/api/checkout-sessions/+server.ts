@@ -17,7 +17,19 @@ export const POST: RequestHandler = async ({ request, res }) => {
 	const { bookingId } = await request.json();
 
 	const bookingForm = await forms.findOne({ _id: new ObjectId(bookingId) });
+	if (bookingForm === null) {
+		return new Response(JSON.stringify({ url: '', sessionId: '' }), {
+			status: 200,
+			headers: { 'content-type': 'application/json' }
+		});
+	}
 	const findVehicle = await vehicles.findOne({ _id: new ObjectId(bookingForm.VehicleId) });
+	if (findVehicle === null) {
+		return new Response(JSON.stringify({ url: '', sessionId: '' }), {
+			status: 200,
+			headers: { 'content-type': 'application/json' }
+		});
+	}
 
 	const formTimeSpan = bookingForm.timeSpan;
 	const timeSpan = formTimeSpan;
